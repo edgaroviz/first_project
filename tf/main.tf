@@ -1,4 +1,4 @@
-module "aws_vpc" {
+module "ZeVPC" {
   source = "terraform-aws-modules/vpc/aws"
 
   name = "ZeVPC"
@@ -22,7 +22,7 @@ resource "aws_eks_cluster" "ZeCluster" {
   role_arn = aws_iam_role.eks_cluster_role.arn
 
   vpc_config {
-    subnet_ids = [module.aws_vpc.private_subnets]
+    subnet_ids = [module.ZeVPC.private_subnets]
   }
 
   # Ensure that IAM Role permissions are created before and deleted after EKS Cluster handling.
