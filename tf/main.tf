@@ -19,7 +19,7 @@ module "ZeVPC" {
 
 resource "aws_eks_cluster" "ZeCluster" {
   name     = "ZeCluster"
-  role_arn = aws_iam_role.eks_cluster_role.arn
+  role_arn = aws_iam_role.ZeClusterRole.arn
 
   vpc_config {
     subnet_ids = [module.ZeVPC.private_subnets]
@@ -30,6 +30,27 @@ resource "aws_eks_cluster" "ZeCluster" {
   depends_on = [
     aws_iam_role_policy_attachment.eks_cluster_policy_attachment,
     aws_iam_role_policy_attachment.eks_service_policy_attachment,
+  ]
+}
+
+resource "aws_eks_node_group" "node_group" {
+  cluster_name    = var.cluster_name
+  node_group_name = var.node_group_name
+  node_role_arn   = aws_iam_role.ZeNodeRole.arn
+  subnet_ids      = module.ZeVPC.private_subnets
+
+  scaling_config {
+    desired_size = 2
+    max_size     = 3
+    min_size     = 1
+  }
+
+  instance_types = ["t3.medium"]
+
+  depends_on = [
+    aws_iam_role_policy_attachment.node_group_policy,
+    aws_iam_role_policy_attachment.cni_policy,
+    aws_iam_role_policy_attachment.registry_policy,
   ]
 }
 
