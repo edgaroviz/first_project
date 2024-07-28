@@ -10,4 +10,4 @@ COPY . .
 
 EXPOSE 8080
 
-RUN ["python" "counter-service.py"]
+ENTRYPOINT ["python", "counter-service.py"]
