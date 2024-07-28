@@ -50,4 +50,3 @@ jobs:
         run: |
           cd tf
           terraform apply -auto-approve
-      
