@@ -23,12 +23,6 @@ jobs:
         with:
           terraform_version: 1.9.2
 
-      - name: Terraform Destroy ArgoCD
-        run: |
-          cd argocd
-          terraform init
-          terraform destroy -auto-approve
-
       - name: Terraform Destroy Infra
         run: |
           cd tf
