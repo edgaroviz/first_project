@@ -7,7 +7,7 @@ terraform {
   }
   backend "s3" {
     bucket = "zemybucket"
-    key    = "path/to/my/key"
+    key    = "tf-infra"
     region = "eu-west-1"
   }
 }
