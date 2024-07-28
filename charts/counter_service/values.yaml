@@ -1,0 +1,9 @@
+appName: counter_service
+environment: prod
+replicasDev: 2
+replicasProd: 3
+service: app-service
+namespace: counter-app
+image:
+  repository: 637423606705.dkr.ecr.eu-west-1.amazonaws.com/ze_repo
+  tag: e078e6017eda71e1d54a8c75f8df05ae43d1da4e

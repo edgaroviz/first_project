@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1 # API version
+kind: Application
+metadata:
+  name: metrics-server
+  namespace: argocd
+spec:
+  destination:
+    namespace: metrics-server
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    repoURL: https://github.com/edgaroviz/first_project
+    targetRevision: main
+    path: charts/metrics-server
+    helm:
+      valueFiles:
+        - values.yaml
+  syncPolicy:
+    syncOptions: # Sync options which modifies sync behavior
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
