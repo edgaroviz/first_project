@@ -10,7 +10,6 @@ module "ze_vpc" {
 
   enable_nat_gateway = true
   enable_vpn_gateway = false
-  force_destroy = true
 
   tags = {
     Terraform = "true"
