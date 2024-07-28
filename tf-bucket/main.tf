@@ -12,7 +12,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "ze_bucket" {
-  bucket = "ze_bucket"
+  bucket = "zebucket"
 
   tags = {
     Environment = "dev"
