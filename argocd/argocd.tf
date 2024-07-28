@@ -21,6 +21,6 @@ resource "kubernetes_manifest" "counter_service_app" {
   manifest = yamldecode(file("${path.module}/../meta/counter_service.yaml"))
 }
 
-resource "kubernetes_manifest" "counter_service_app" {
+resource "kubernetes_manifest" "metrics_server" {
   manifest = yamldecode(file("${path.module}/../meta/metrics_server.yaml"))
 }
