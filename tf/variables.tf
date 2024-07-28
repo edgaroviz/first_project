@@ -1,13 +1,13 @@
 variable "cluster_name" {
   description = "The name of the EKS cluster"
   type        = string
-  default = "ZeCluster"
+  default = "ze_cluster"
 }
 
 variable "node_group_name" {
   description = "The name of the EKS node group"
   type        = string
-  default = "ZeNodeGroup"
+  default = "ze_node_group"
 }
 
 variable "subnet_public_ids" {
@@ -24,11 +24,11 @@ variable "subnet_private_ids" {
 variable "node_role_name" {
   description = "The name of the IAM role for the EKS node group"
   type        = string
-  default = "ZeNodeRole"
+  default = "ze_node_role"
 }
 
 variable "cluster_role_name" {
   description = "The name of the IAM role for the EKS cluster"
   type        = string
-  default     = "ZeClusterRole"
+  default     = "ze_cluster_role"
 }

@@ -11,10 +11,10 @@ provider "aws" {
   region     = "eu-west-1"
 }
 
-resource "aws_s3_bucket" "ZeBucket" {
-  bucket = "ZeBucket"
+resource "aws_s3_bucket" "ze_bucket" {
+  bucket = "ze_bucket"
 
   tags = {
-    Environment = "Dev"
+    Environment = "dev"
   }
 }
