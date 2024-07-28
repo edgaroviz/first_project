@@ -1,7 +1,7 @@
-module "ZeVPC" {
+module "ze_vpc" {
   source = "terraform-aws-modules/vpc/aws"
 
-  name = "ZeVPC"
+  name = "ze_vpc"
   cidr = "10.0.0.0/16"
 
   azs             = ["eu-west-1a", "eu-west-1b"]
@@ -19,10 +19,10 @@ module "ZeVPC" {
 
 resource "aws_eks_cluster" "ZeCluster" {
   name     = "ZeCluster"
-  role_arn = aws_iam_role.ZeClusterRole.arn
+  role_arn = aws_iam_role.ze_cluster_role.arn
 
   vpc_config {
-    subnet_ids = [module.ZeVPC.private_subnets]
+    subnet_ids = [module.ze_vpc.private_subnets]
   }
 
   # Ensure that IAM Role permissions are created before and deleted after EKS Cluster handling.
@@ -36,8 +36,8 @@ resource "aws_eks_cluster" "ZeCluster" {
 resource "aws_eks_node_group" "node_group" {
   cluster_name    = var.cluster_name
   node_group_name = var.node_group_name
-  node_role_arn   = aws_iam_role.ZeNodeRole.arn
-  subnet_ids      = module.ZeVPC.private_subnets
+  node_role_arn   = aws_iam_role.ze_node_role.arn
+  subnet_ids      = module.ze_vpc.private_subnets
 
   scaling_config {
     desired_size = 2
@@ -56,7 +56,7 @@ resource "aws_eks_node_group" "node_group" {
 
 # ECR Repository
 resource "aws_ecr_repository" "ZeRepo" {
-  name = "ZeRepo"
+  name = "ze_repo"
 }
 
 
