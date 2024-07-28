@@ -1,12 +1,12 @@
 name: Terraform Infra Deployment
 
-#on:
-#  workflow_dispatch
-
 on:
-  push:
-    branches:
-    - master
+  workflow_dispatch
+
+#on:
+#  push:
+#    branches:
+#    - master
 
 jobs:
   deploy:

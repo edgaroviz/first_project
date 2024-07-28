@@ -10,6 +10,7 @@ module "ze_vpc" {
 
   enable_nat_gateway = true
   enable_vpn_gateway = false
+  force_destroy = true
 
   tags = {
     Terraform = "true"
@@ -57,6 +58,7 @@ resource "aws_eks_node_group" "node_group" {
 # ECR Repository
 resource "aws_ecr_repository" "ZeRepo" {
   name = "ze_repo"
+  force_destroy = true
 }
 
 
