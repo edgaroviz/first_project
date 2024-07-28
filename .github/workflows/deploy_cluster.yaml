@@ -53,6 +53,7 @@ jobs:
 
       - name: Apply ArgoCD
         run: |
+          aws eks --region eu-west-1 update-kubeconfig --name ZeCluster --kubeconfig ~/.kube/config
           cd argocd
           terraform init
           terraform plan
