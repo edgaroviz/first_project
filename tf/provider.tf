@@ -6,7 +6,7 @@ terraform {
     }
   }
   backend "s3" {
-    bucket = "ze_bucket"
+    bucket = "zebucket"
     key    = "path/to/my/key"
     region = "eu-west-1"
   }
