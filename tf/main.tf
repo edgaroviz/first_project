@@ -22,7 +22,7 @@ resource "aws_eks_cluster" "ZeCluster" {
   role_arn = aws_iam_role.ze_cluster_role.arn
 
   vpc_config {
-    subnet_ids = [module.ze_vpc.private_subnets]
+    subnet_ids = module.ze_vpc.private_subnets
   }
 
   # Ensure that IAM Role permissions are created before and deleted after EKS Cluster handling.
