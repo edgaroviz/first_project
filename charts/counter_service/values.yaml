@@ -1,4 +1,4 @@
-appName: counter_service
+appName: counter-service
 environment: prod
 replicasDev: 2
 replicasProd: 3
